@@ -1,0 +1,18 @@
+# Local data and secrets
+storage/installed.lock
+storage/dev-admin.txt
+storage/uploads/*
+storage/backups/*
+!storage/uploads/.gitkeep
+!storage/backups/.gitkeep
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Report output (submitted separately)
+docs/report/*.docx
+docs/report/*.pdf
+docs/report/build/__pycache__/

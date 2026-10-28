@@ -1,0 +1,319 @@
+{
+ "started": "2026-10-28 11:24",
+ "cases": [
+  {
+   "id": "TC01",
+   "area": "Home",
+   "title": "Home page shows Oman key figures",
+   "expected": "Page loads with leading platform, internet users and population",
+   "actual": "HTTP 200, KPI cards shown, 511 ms",
+   "result": "Pass",
+   "ms": 511
+  },
+  {
+   "id": "TC02",
+   "area": "Language",
+   "title": "Switch the interface to Arabic",
+   "expected": "Page uses right-to-left layout and Arabic text",
+   "actual": "dir=rtl, RTL stylesheet and Arabic menu loaded",
+   "result": "Pass",
+   "ms": 430
+  },
+  {
+   "id": "TC03",
+   "area": "Explore",
+   "title": "Default time series for Oman",
+   "expected": "24 monthly values for every platform with data",
+   "actual": "24 months, 9 platforms",
+   "result": "Pass",
+   "ms": 263
+  },
+  {
+   "id": "TC04",
+   "area": "Explore",
+   "title": "3-month moving average",
+   "expected": "Each smoothed value equals the mean of that month and the two before",
+   "actual": "June average 55.3 = mean of Apr-Jun (55.3)",
+   "result": "Pass",
+   "ms": 504
+  },
+  {
+   "id": "TC05",
+   "area": "Explore",
+   "title": "Yearly World Bank indicator",
+   "expected": "Labels are years and the device filter is ignored",
+   "actual": "yearly labels up to 2025",
+   "result": "Pass",
+   "ms": 220
+  },
+  {
+   "id": "TC06",
+   "area": "Compare",
+   "title": "Compare countries is limited to six",
+   "expected": "Only the first 6 countries are returned",
+   "actual": "7 countries requested, 6 returned",
+   "result": "Pass",
+   "ms": 249
+  },
+  {
+   "id": "TC07",
+   "area": "Home",
+   "title": "Map of the leading platform",
+   "expected": "Every country with data gets a colour; Worldwide is not drawn",
+   "actual": "16 countries coloured, 'Worldwide' excluded",
+   "result": "Pass",
+   "ms": 243
+  },
+  {
+   "id": "TC08",
+   "area": "API",
+   "title": "Unknown statistic type",
+   "expected": "HTTP 400 with an error message",
+   "actual": "HTTP 400 {\"error\":\"\u0646\u0648\u0639 \u0625\u062d\u0635\u0627\u0626\u064a\u0629 \u063a\u064a\u0631 \u0645\u0639\u0631\u0648\u0641.\"}",
+   "result": "Pass",
+   "ms": 257
+  },
+  {
+   "id": "TC09",
+   "area": "API",
+   "title": "Unknown device value",
+   "expected": "HTTP 400 with an error message",
+   "actual": "HTTP 400 {\"error\":\"\u062c\u0647\u0627\u0632 \u063a\u064a\u0631 \u0645\u0639\u0631\u0648\u0641.\"}",
+   "result": "Pass",
+   "ms": 237
+  },
+  {
+   "id": "TC10",
+   "area": "Explore",
+   "title": "Unknown country code in the link",
+   "expected": "The page falls back to the default country (Oman)",
+   "actual": "falls back to Oman",
+   "result": "Pass",
+   "ms": 301
+  },
+  {
+   "id": "TC11",
+   "area": "Security",
+   "title": "Script injected in a URL parameter (XSS)",
+   "expected": "Invalid value is ignored and never reaches the page",
+   "actual": "invalid period ignored, default period used; no script in the page",
+   "result": "Pass",
+   "ms": 296
+  },
+  {
+   "id": "TC12",
+   "area": "Local study",
+   "title": "Filter results by age group and gender",
+   "expected": "Numbers and charts change to the filtered group",
+   "actual": "all: 50, girls 16-18: 9",
+   "result": "Pass",
+   "ms": 518
+  },
+  {
+   "id": "TC13",
+   "area": "Questionnaire",
+   "title": "Favourite platform not among used platforms",
+   "expected": "Rejected with a clear message",
+   "actual": "error shown, nothing saved",
+   "result": "Pass",
+   "ms": 532
+  },
+  {
+   "id": "TC14",
+   "area": "Questionnaire",
+   "title": "Submit without ticking consent",
+   "expected": "Rejected; asks for consent",
+   "actual": "consent error shown",
+   "result": "Pass",
+   "ms": 494
+  },
+  {
+   "id": "TC15",
+   "area": "Questionnaire",
+   "title": "Valid questionnaire answer",
+   "expected": "Saved, then redirected to the results",
+   "actual": "HTTP 302 to local-study.php, responses 50 -> 51",
+   "result": "Pass",
+   "ms": 584
+  },
+  {
+   "id": "TC16",
+   "area": "Questionnaire",
+   "title": "Second answer from the same session",
+   "expected": "Refused; count does not change",
+   "actual": "second answer refused, responses still 51",
+   "result": "Pass",
+   "ms": 583
+  },
+  {
+   "id": "TC17",
+   "area": "Security",
+   "title": "Hidden honeypot field filled by a bot",
+   "expected": "Answer silently discarded",
+   "actual": "bot answer ignored, responses still 51",
+   "result": "Pass",
+   "ms": 659
+  },
+  {
+   "id": "TC18",
+   "area": "Security",
+   "title": "Open an admin page without signing in",
+   "expected": "Redirected to the sign-in page",
+   "actual": "HTTP 302 -> admin/login.php",
+   "result": "Pass",
+   "ms": 329
+  },
+  {
+   "id": "TC19",
+   "area": "Security",
+   "title": "Sign in with a wrong password",
+   "expected": "Generic error; attempt written to the audit log",
+   "actual": "error shown, 1 failed attempt(s) in audit log",
+   "result": "Pass",
+   "ms": 842
+  },
+  {
+   "id": "TC20",
+   "area": "Security",
+   "title": "Five wrong passwords in a row",
+   "expected": "Account locked for 15 minutes, even for the right password",
+   "actual": "6th attempt with the right password refused: account locked 15 min",
+   "result": "Pass",
+   "ms": 3988
+  },
+  {
+   "id": "TC21",
+   "area": "Security",
+   "title": "Form sent without CSRF token",
+   "expected": "Request refused with HTTP 403",
+   "actual": "HTTP 403: The form has expired. Go back, reload th...",
+   "result": "Pass",
+   "ms": 303
+  },
+  {
+   "id": "TC22",
+   "area": "Admin",
+   "title": "Sign in with correct details",
+   "expected": "Dashboard opens; session id renewed",
+   "actual": "HTTP 302 -> dashboard",
+   "result": "Pass",
+   "ms": 1027
+  },
+  {
+   "id": "TC23",
+   "area": "Security",
+   "title": "Data editor opens an administrator page",
+   "expected": "Audit log refused (403); editor pages allowed",
+   "actual": "audit log HTTP 403, update page HTTP 200",
+   "result": "Pass",
+   "ms": 1253
+  },
+  {
+   "id": "TC24",
+   "area": "Import",
+   "title": "Upload a .txt file",
+   "expected": "File rejected before it is stored",
+   "actual": "rejected: only .csv and .xlsx accepted",
+   "result": "Pass",
+   "ms": 765
+  },
+  {
+   "id": "TC25",
+   "area": "Import",
+   "title": "Excel file with two bad rows",
+   "expected": "Preview lists valid rows and explains each error",
+   "actual": "preview: 2 valid rows, 2 errors with row numbers; cancelled",
+   "result": "Pass",
+   "ms": 1336
+  },
+  {
+   "id": "TC26",
+   "area": "Import",
+   "title": "Save an import, then undo it",
+   "expected": "Rows are saved, and undo removes all of them",
+   "actual": "import #11: 2 rows saved, 0 left after undo",
+   "result": "Pass",
+   "ms": 1956
+  },
+  {
+   "id": "TC27",
+   "area": "Import",
+   "title": "StatCounter CSV with empty future months",
+   "expected": "Months where every value is 0 are skipped",
+   "actual": "parsed months: 1 2026-09-01",
+   "result": "Pass",
+   "ms": 354
+  },
+  {
+   "id": "TC28",
+   "area": "Backup",
+   "title": "Download a full database backup",
+   "expected": "File contains every table and the same number of rows",
+   "actual": "1921 KB, all 11 tables, 21596 data rows match",
+   "result": "Pass",
+   "ms": 3026
+  },
+  {
+   "id": "TC29",
+   "area": "Security",
+   "title": "Open private folders in the browser",
+   "expected": "includes/, storage/ and database/ return 403",
+   "actual": "HTTP 403 / 403 / 403",
+   "result": "Pass",
+   "ms": 209
+  },
+  {
+   "id": "TC30",
+   "area": "Data sources",
+   "title": "Update from the World Bank API",
+   "expected": "Request succeeds; values updated; date recorded",
+   "actual": "0 new values, 0 updated, 0 requests failed in 4 s",
+   "result": "Pass",
+   "ms": 4550
+  }
+ ],
+ "perf": [
+  {
+   "page": "Home page (index.php)",
+   "avg": 287,
+   "max": 319,
+   "min": 261
+  },
+  {
+   "page": "Explore page (explore.php)",
+   "avg": 341,
+   "max": 387,
+   "min": 308
+  },
+  {
+   "page": "Compare page with ranking and scatter",
+   "avg": 385,
+   "max": 456,
+   "min": 338
+  },
+  {
+   "page": "API: one country series",
+   "avg": 313,
+   "max": 373,
+   "min": 287
+  },
+  {
+   "page": "API: compare 6 countries",
+   "avg": 284,
+   "max": 309,
+   "min": 261
+  },
+  {
+   "page": "API: map",
+   "avg": 264,
+   "max": 287,
+   "min": 242
+  },
+  {
+   "page": "Local study page",
+   "avg": 264,
+   "max": 285,
+   "min": 244
+  }
+ ]
+}
