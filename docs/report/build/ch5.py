@@ -18,9 +18,8 @@ CH5 = [
       f"reports the results of {len(cases)} test cases, the response times and the defects that testing found. Section 5.5 "
       "describes what is needed to deploy and use the system, and Section 5.6 evaluates the finished system against its "
       "requirements."),
-    P("The complete source code is stored in a GitHub repository. Only short extracts are printed here; the line numbers in "
-      "each listing refer to the files in that repository."),
-    NOTE("[Add the GitHub repository link here and in Section 6.6 after the code is uploaded.]"),
+    P("The complete source code is stored in a public GitHub repository at https://github.com/omanusex/social-statistics. "
+      "Only short extracts are printed here; the line numbers in each listing refer to the files in that repository."),
 
     H2("5.2 Development environment and tools"),
     TABLE("Development tools and libraries", ["Tool", "Version", "Used for"], [

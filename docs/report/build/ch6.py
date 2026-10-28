@@ -190,7 +190,7 @@ CH6 = [
     H2("6.6 Source code"),
     P("The complete source code of the system, including the database schema, the import templates and the test script, is "
       "available in the following GitHub repository:"),
-    NOTE("[GitHub repository link]"),
+    P("https://github.com/omanusex/social-statistics"),
 
     H2("References"),
     REF("Creative Commons (n.d.) Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0). Available at: https://creativecommons.org/licenses/by-sa/3.0/ (Accessed: 28 October 2026)."),
